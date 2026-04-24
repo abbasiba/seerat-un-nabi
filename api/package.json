@@ -1,0 +1,8 @@
+{
+  "name": "seerat-un-nabi",
+  "version": "1.0.0",
+  "description": "Seerat Un Nabi ﷺ - Abbas AI Lab",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
