@@ -621,85 +621,245 @@
   .form-group input:focus { border-color: var(--gold); }
 
   /* Certificate */
+  /* === CERTIFICATE === */
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Amiri:wght@400;700&display=swap');
+
   .certificate {
-    max-width: 750px;
+    max-width: 780px;
     margin: 0 auto;
-    background: linear-gradient(135deg, #0A1F0F 0%, #0D2E18 40%, #0A1F0F 100%);
-    border: 3px solid var(--gold);
-    border-radius: 20px;
-    padding: 40px 44px;
+    background: linear-gradient(160deg, #fdf8ec 0%, #f5ead6 50%, #fdf8ec 100%);
+    border: 0px solid transparent;
+    border-radius: 8px;
+    padding: 0;
     position: relative;
     text-align: center;
     overflow: hidden;
     animation: fadeIn 0.6s ease;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    font-family: 'Georgia', serif;
+    color: #2c1a00;
   }
 
-  .certificate::before {
-    content: '';
-    position: absolute; inset: 8px;
-    border: 1px solid rgba(200,150,12,0.3);
-    border-radius: 14px;
-    pointer-events: none;
-  }
-
-  .cert-corner {
+  .cert-outer-border {
     position: absolute;
-    width: 60px; height: 60px;
-    font-size: 1.8rem;
-    opacity: 0.5;
+    inset: 0;
+    border: 18px solid transparent;
+    border-image: repeating-linear-gradient(
+      45deg,
+      #c8960c, #e8c84a 10px, #c8960c 20px, #8b6914 30px
+    ) 18;
+    pointer-events: none;
+    z-index: 10;
   }
-  .cert-corner.tl { top: 14px; right: 14px; }
-  .cert-corner.tr { top: 14px; left: 14px; }
-  .cert-corner.bl { bottom: 14px; right: 14px; }
-  .cert-corner.br { bottom: 14px; left: 14px; }
 
-  .cert-logo { font-size: 3.5rem; margin-bottom: 6px; filter: drop-shadow(0 0 10px rgba(200,150,12,0.5)); }
-  .cert-org { font-family: 'Cinzel', serif; font-size: 0.75rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; direction: ltr; margin-bottom: 4px; }
-  .cert-title { font-family: 'Amiri', serif; font-size: 1.5rem; color: var(--gold-light); margin: 8px 0 2px; }
-  .cert-divider {
-    width: 80%; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 12px auto;
+  .cert-inner-border {
+    position: absolute;
+    inset: 22px;
+    border: 2px solid rgba(180,130,10,0.5);
+    pointer-events: none;
+    z-index: 10;
   }
-  .cert-award { font-size: 0.88rem; color: rgba(253,248,240,0.65); margin-bottom: 4px; }
-  .cert-name { font-family: 'Amiri', serif; font-size: 2.2rem; color: var(--gold-light); margin: 8px 0 2px; }
-  .cert-father { font-size: 0.95rem; color: rgba(253,248,240,0.7); margin-bottom: 14px; }
-  .cert-course { font-size: 1.05rem; color: var(--cream); margin-bottom: 6px; }
-  .cert-score-display {
-    display: inline-block;
-    background: rgba(200,150,12,0.12);
-    border: 1px solid rgba(200,150,12,0.3);
-    padding: 6px 20px;
-    border-radius: 20px;
-    color: var(--gold);
-    font-size: 0.88rem;
-    margin: 6px 0 16px;
-    font-family: 'Amiri', serif;
-  }
-  .cert-seal {
+
+  .cert-corner-ornament {
+    position: absolute;
     width: 80px; height: 80px;
+    opacity: 0.6;
+  }
+  .cert-corner-ornament.tl { top: 5px; left: 5px; }
+  .cert-corner-ornament.tr { top: 5px; right: 5px; transform: scaleX(-1); }
+  .cert-corner-ornament.bl { bottom: 5px; left: 5px; transform: scaleY(-1); }
+  .cert-corner-ornament.br { bottom: 5px; right: 5px; transform: scale(-1); }
+
+  .cert-body {
+    padding: 40px 50px 30px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cert-mosque-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .cert-crescent {
+    font-size: 7rem;
+    color: #c8960c;
+    line-height: 1;
+    filter: drop-shadow(0 4px 12px rgba(180,130,10,0.4));
+  }
+
+  .cert-mosque-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(200,150,12,0.3) 0%, transparent 70%);
-    border: 2px solid var(--gold);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    margin: 0 auto 12px;
-    font-size: 1.8rem;
+    object-fit: cover;
+    border: 3px solid #c8960c;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   }
-  .cert-date { font-size: 0.8rem; color: rgba(200,150,12,0.6); font-family: 'Amiri', serif; direction: ltr; margin-top: 6px; }
-  .cert-hashtags {
-    font-size: 0.72rem;
-    color: rgba(200,150,12,0.45);
-    margin-top: 8px;
-    letter-spacing: 0.5px;
-    line-height: 1.8;
+
+  .cert-star {
+    position: absolute;
+    top: 0px;
+    right: -10px;
+    font-size: 1.5rem;
+    color: #c8960c;
+  }
+
+  .cert-main-title {
+    font-family: 'Cinzel Decorative', 'Cinzel', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #8b6914;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    line-height: 1.1;
+    margin: 5px 0 0;
     direction: ltr;
+    letter-spacing: 2px;
   }
+
+  .cert-sub-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: #6b4f10;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    direction: ltr;
+    margin: 4px 0 14px;
+  }
+
+  .cert-divider-fancy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px auto;
+    width: 70%;
+  }
+  .cert-divider-fancy::before,
+  .cert-divider-fancy::after {
+    content: '';
+    flex: 1;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, #c8960c);
+  }
+  .cert-divider-fancy::after {
+    background: linear-gradient(90deg, #c8960c, transparent);
+  }
+  .cert-divider-dot {
+    color: #c8960c;
+    font-size: 1.2rem;
+  }
+
+  .cert-awarded-text {
+    font-style: italic;
+    font-size: 1rem;
+    color: #5a3e10;
+    margin: 8px 0 4px;
+  }
+
+  .cert-name {
+    font-family: 'Amiri', serif;
+    font-size: 2.8rem;
+    color: #8b6914;
+    font-weight: 700;
+    margin: 4px 0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    line-height: 1.3;
+  }
+
+  .cert-description {
+    font-size: 0.95rem;
+    color: #4a3520;
+    margin: 8px auto;
+    max-width: 480px;
+    line-height: 1.6;
+  }
+
+  .cert-score-badge {
+    display: inline-block;
+    border: 1.5px solid #c8960c;
+    border-radius: 20px;
+    padding: 4px 20px;
+    color: #8b6914;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 8px 0;
+    direction: ltr;
+    letter-spacing: 1px;
+  }
+
+  .cert-medal {
+    font-size: 2.5rem;
+    margin: 6px 0 2px;
+    filter: drop-shadow(0 2px 6px rgba(180,130,10,0.4));
+  }
+
+  .cert-date-display {
+    font-size: 0.9rem;
+    color: #5a3e10;
+    margin: 2px 0;
+  }
+
+  .cert-hashtags {
+    font-size: 0.65rem;
+    color: rgba(100,70,10,0.5);
+    margin: 8px 0;
+    direction: ltr;
+    letter-spacing: 0.5px;
+  }
+
+  .cert-signatures {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 10px;
+    margin-top: 14px;
+    align-items: end;
+    border-top: 1px solid rgba(180,130,10,0.3);
+    padding-top: 14px;
+  }
+
+  .cert-sig-block {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #5a3e10;
+  }
+
+  .cert-sig-line {
+    border-bottom: 1px solid #8b6914;
+    margin-bottom: 4px;
+    height: 24px;
+  }
+
+  .cert-stamp-box {
+    border: 1.5px solid #8b6914;
+    width: 70px;
+    height: 50px;
+    margin: 0 auto 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    color: #8b6914;
+  }
+
+  .cert-org-right {
+    text-align: right;
+    font-size: 0.75rem;
+    color: #5a3e10;
+    line-height: 1.5;
+  }
+
   .cert-print {
     margin-top: 20px;
     display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
   }
 
-  /* === ABOUT PANEL === */
+  /* === ABOUT PANEL === *//* === ABOUT PANEL === */
   .about-card {
     background: linear-gradient(135deg, rgba(10,42,26,0.8), rgba(15,61,40,0.4));
     border: 1px solid rgba(200,150,12,0.2);
@@ -972,25 +1132,88 @@
     <!-- Certificate -->
     <div id="quizCertificate" style="display:none;">
       <div class="certificate" id="certBox">
-        <div class="cert-corner tl">✦</div>
-        <div class="cert-corner tr">✦</div>
-        <div class="cert-corner bl">✦</div>
-        <div class="cert-corner br">✦</div>
-        <div class="cert-logo">☪️</div>
-        <div class="cert-org">Abbas AI Lab • Seerat Un Nabi Project</div>
-        <h2 class="cert-title">سندِ تکمیل</h2>
-        <h2 class="cert-title" style="font-size:1.1rem;color:rgba(240,192,64,0.7);direction:ltr;font-family:'Cinzel',serif;">CERTIFICATE OF COMPLETION</h2>
-        <div class="cert-divider"></div>
-        <p class="cert-award" id="ca1">یہ سند اس بات کی گواہ ہے کہ</p>
-        <div class="cert-name" id="certNameDisplay"></div>
-        <div class="cert-father" id="certFatherDisplay"></div>
-        <p class="cert-course" id="ca2">نے سیرتِ النبی ﷺ کوئز کامیابی سے مکمل کیا</p>
-        <div class="cert-divider"></div>
-        <div class="cert-score-display" id="certScoreDisplay"></div>
-        <div class="cert-seal">🏅</div>
-        <p style="color:rgba(200,150,12,0.7);font-size:0.85rem;font-family:'Amiri',serif;" id="certCityDisplay"></p>
-        <div class="cert-date" id="certDateDisplay"></div>
-        <div class="cert-hashtags">#SeeratUnNabi #QuranAndSeerat #IslamicResearch #PropheticBiography #AbbasAILab</div>
+        <!-- Borders -->
+        <div class="cert-outer-border"></div>
+        <div class="cert-inner-border"></div>
+
+        <!-- Corner ornaments -->
+        <div class="cert-corner-ornament tl">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 5 L35 5 L35 15 L15 15 L15 35 L5 35 Z" fill="#c8960c" opacity="0.6"/>
+            <path d="M5 5 L20 20" stroke="#c8960c" stroke-width="1.5" opacity="0.4"/>
+            <circle cx="40" cy="40" r="8" fill="none" stroke="#c8960c" stroke-width="1" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="cert-corner-ornament tr">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 5 L35 5 L35 15 L15 15 L15 35 L5 35 Z" fill="#c8960c" opacity="0.6"/>
+            <path d="M5 5 L20 20" stroke="#c8960c" stroke-width="1.5" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="cert-corner-ornament bl">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 5 L35 5 L35 15 L15 15 L15 35 L5 35 Z" fill="#c8960c" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="cert-corner-ornament br">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 5 L35 5 L35 15 L15 15 L15 35 L5 35 Z" fill="#c8960c" opacity="0.6"/>
+          </svg>
+        </div>
+
+        <div class="cert-body">
+          <!-- Mosque image with crescent -->
+          <div class="cert-mosque-container">
+            <div class="cert-crescent">☽</div>
+            <img class="cert-mosque-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23145A32'/%3E%3Ctext x='50' y='65' text-anchor='middle' font-size='50'%3E🕌%3C/text%3E%3C/svg%3E" alt="Masjid">
+            <div class="cert-star">★</div>
+          </div>
+
+          <!-- Title -->
+          <div class="cert-main-title">CERTIFICATE</div>
+          <div class="cert-main-title" style="font-size:1.8rem;">OF COMPLETION</div>
+          <div class="cert-sub-title">SEERAT-UN-NABI ﷺ COURSE</div>
+
+          <div class="cert-divider-fancy"><span class="cert-divider-dot">✦</span></div>
+
+          <p class="cert-awarded-text">is awarded to:</p>
+
+          <div class="cert-name" id="certNameDisplay"></div>
+          <div style="font-size:0.85rem;color:#6b4f10;margin:2px 0;" id="certFatherDisplay"></div>
+
+          <div class="cert-divider-fancy"><span class="cert-divider-dot">✦</span></div>
+
+          <p class="cert-description">
+            This is to certify that <strong id="certNameDesc">the student</strong> has successfully completed the Seerat-un-Nabi course with dedication and excellence.
+          </p>
+
+          <div class="cert-score-badge" id="certScoreDisplay"></div>
+
+          <div class="cert-medal">🏅</div>
+          <div class="cert-date-display" id="certDateDisplay"></div>
+          <p style="font-size:0.8rem;color:#6b4f10;margin:2px 0;" id="certCityDisplay"></p>
+
+          <div class="cert-hashtags">#SeeratUnNabi #QuranAndSeerat #IslamicResearch #PropheticBiography #AbbasAILab</div>
+
+          <!-- Signatures -->
+          <div class="cert-signatures">
+            <div class="cert-sig-block">
+              <div class="cert-sig-line"></div>
+              <div>Instructor/Teacher Name</div>
+              <div style="margin-top:2px;">Signature</div>
+            </div>
+            <div class="cert-sig-block">
+              <div class="cert-stamp-box">Stamp</div>
+            </div>
+            <div class="cert-org-right">
+              <strong>Abbas AI Lab &</strong><br>
+              Seerat Un Nabi Project<br>
+              <span style="font-size:0.7rem;">Organization/Institute Name</span><br>
+              <div class="cert-sig-line" style="margin-top:4px;"></div>
+              <div>Date</div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="cert-print" id="certActions">
         <button class="btn-primary" onclick="printCertificate()">🖨️ پرنٹ کریں</button>
@@ -1546,6 +1769,8 @@ function generateCertificate() {
   const today = new Date().toLocaleDateString('ur-PK', { year: 'numeric', month: 'long', day: 'numeric' });
 
   document.getElementById('certNameDisplay').textContent = name;
+  const descName = document.getElementById('certNameDesc');
+  if (descName) descName.textContent = name;
   document.getElementById('certFatherDisplay').textContent = father ? 'ولد: ' + father : '';
   document.getElementById('certScoreDisplay').textContent = score + ' / ' + total + ' (' + pct + '%)';
   document.getElementById('certCityDisplay').textContent = city ? '📍 ' + city : '';
